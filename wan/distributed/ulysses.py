@@ -26,6 +26,9 @@ def distributed_attention(
     """
     if not dist.is_initialized():
         raise ValueError("distributed group should be initialized.")
+
+
+    print("Ulyssess!")
     b = q.shape[0]
 
     # gather q/k/v sequence
