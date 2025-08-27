@@ -23,7 +23,9 @@ def all_to_all(x, scatter_dim, gather_dim, group=None, **kwargs):
     `scatter` along one dimension and `gather` along another.
     """
     world_size = get_world_size()
+    print("All to all!")
     if world_size > 1:
+        print("All to in all!")
         inputs = [u.contiguous() for u in x.chunk(world_size, dim=scatter_dim)]
         outputs = [torch.empty_like(u) for u in inputs]
         dist.all_to_all(outputs, inputs, group=group, **kwargs)
